@@ -105,7 +105,7 @@ const HeroSection = () => {
   );
 
   return (
-    <div className="w-screen min-h-[120vh] relative" ref={containerRef}>
+    <div className="w-screen min-h-[120vh] relative " ref={containerRef}>
       <div className="sticky top-0 w-full h-screen">
         <Canvas camera={{ position: [3.86, 29.96, 0.01], fov: 50 }}>
           <CameraHandler animValues={animValues} />

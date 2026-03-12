@@ -1,23 +1,25 @@
 "use client";
 
 import Image from "next/image";
+import PageTitle from "../ui/PageTitle";
 
 export default function HowItWorksSection() {
   return (
     <section id="how-it-works" className="pt-8 md:pt-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 md:px-0 mb-16">
+      <div className="max-w-11/12 mx-auto px-4 md:px-0 mb-16">
         {/* Section Header */}
         <div className="mb-0 text-left">
           {/* <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             How LifePath Works
           </div> */}
-          <h2 className="max-w-5xl mx-auto text-center text-2xl md:text-7xl font-semibold text-blue-700 mt-4">
-            From self-discovery to paid work no guesswork, just momentum
-          </h2>
-          <p className="max-w-3xl mx-auto text-center text-zinc-700 mt-4">
-            Discover your strengths, choose the right path, <br />
-            and take confident steps toward a fulfilling career.
-          </p>
+          <PageTitle
+            title="From self-discovery to paid work no guesswork, just momentum"
+            subtitle="Discover your strengths, choose the right path, and take confident steps toward a fulfilling career."
+            titleClassName="text-3xl md:text-4xl font-semibold text-zinc-900 mb-2"
+            subtitleClassName="text-lg text-zinc-600"
+            containerClassName="text-center max-w-3xl mx-auto"
+            align="center"
+          />
         </div>
 
         {/* Stepped Grid Layout */}

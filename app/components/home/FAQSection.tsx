@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import PageTitle from "../ui/PageTitle";
 
 const faqs = [
   {
@@ -53,16 +54,16 @@ export default function FAQSection() {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 md:px-0">
-        <div className="mb-4 text-center">
-          <h2 className="max-w-5xl mx-auto text-3xl md:text-7xl font-semibold text-blue-700 mt-4">
-            Frequently Asked <br /> Questions
-          </h2>
-          <p className="text-base md:text-lg text-zinc-600 mt-2">
-            Quick answers to help you understand how Lifepath works.
-          </p>
-        </div>
-        <div className="max-w-2xl mx-auto space-y-2 mt-8">
+      <div className="max-w-4xl mx-auto px-4 md:px-0">
+        <PageTitle
+          title="Frequently Asked Questions"
+          subtitle="Quick answers to help you understand how Lifepath works."
+          titleClassName="text-3xl md:text-4xl font-semibold text-zinc-900 mb-2"
+          subtitleClassName="text-lg text-zinc-600"
+          containerClassName="text-center max-w-3xl mx-auto"
+          align="center"
+        />
+        <div className="space-y-2 mt-8">
           {faqs.map((faq) => (
             <div
               key={faq.id}

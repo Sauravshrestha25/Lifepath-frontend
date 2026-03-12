@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import NewsletterCTA from "../components/home/NewsletterCTA";
+import PageTitle from "../components/ui/PageTitle";
 import { jobs } from "./data";
 
 export default function JobsPage() {
@@ -26,64 +27,63 @@ export default function JobsPage() {
       {/* Hero Section */}
       <section className="bg-linear-to-l from-blue-600 to-black text-white">
         <div className="max-w-6xl mx-auto py-8 px-4 md:px-0">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
-              Find Your Dream Job
-            </h1>
-            <p className="text-lg text-blue-100 mb-8">
-              Discover high-paying opportunities in Nepal and remote positions
-            </p>
+          <PageTitle
+            title="Find Your Dream Job"
+            subtitle="Discover high-paying opportunities in Nepal and remote positions"
+            titleClassName="text-2xl md:text-4xl font-bold text-white mb-4"
+            subtitleClassName="text-lg text-blue-100 mb-8"
+            containerClassName="text-center max-w-3xl mx-auto"
+          />
 
-            {/* Search Bar */}
-            <div className="flex items-center justify-center">
-              <div className="inline-flex rounded-full bg-white/20 border-2 border-white/20 p-1">
-                <button
-                  onClick={() => setActiveRegion("nepal")}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold shadow-sm transition-colors cursor-pointer ${
+          {/* Search Bar */}
+          <div className="flex items-center justify-center">
+            <div className="inline-flex rounded-full bg-white/20 border-2 border-white/20 p-1">
+              <button
+                onClick={() => setActiveRegion("nepal")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold shadow-sm transition-colors cursor-pointer ${
+                  activeRegion === "nepal"
+                    ? "bg-white text-blue-700"
+                    : "text-white/90 hover:text-white"
+                }`}
+              >
+                <Image
+                  src="/flags/Nepal.png"
+                  alt="Nepal Flag"
+                  width={16}
+                  height={16}
+                  className=""
+                />
+                Nepal
+                <span
+                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
                     activeRegion === "nepal"
-                      ? "bg-white text-blue-700"
-                      : "text-white/90 hover:text-white"
+                      ? "bg-blue-100 text-blue-700"
+                      : "bg-white/20 text-white"
                   }`}
                 >
-                  <Image
-                    src="/flags/Nepal.png"
-                    alt="Nepal Flag"
-                    width={16}
-                    height={16}
-                    className=""
-                  />
-                  Nepal
-                  <span
-                    className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
-                      activeRegion === "nepal"
-                        ? "bg-blue-100 text-blue-700"
-                        : "bg-white/20 text-white"
-                    }`}
-                  >
-                    {nepalCount}
-                  </span>
-                </button>
-                <button
-                  onClick={() => setActiveRegion("global")}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  {nepalCount}
+                </span>
+              </button>
+              <button
+                onClick={() => setActiveRegion("global")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  activeRegion === "global"
+                    ? "bg-white text-blue-700"
+                    : "text-white/90 hover:text-white"
+                }`}
+              >
+                <Globe size={18} />
+                International
+                <span
+                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
                     activeRegion === "global"
-                      ? "bg-white text-blue-700"
-                      : "text-white/90 hover:text-white"
+                      ? "bg-blue-100 text-blue-700"
+                      : "bg-white/20 text-white"
                   }`}
                 >
-                  <Globe size={18} />
-                  International
-                  <span
-                    className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
-                      activeRegion === "global"
-                        ? "bg-blue-100 text-blue-700"
-                        : "bg-white/20 text-white"
-                    }`}
-                  >
-                    {globalCount}
-                  </span>
-                </button>
-              </div>
+                  {globalCount}
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -99,13 +99,8 @@ export default function JobsPage() {
                 <Link
                   href={`/jobs/${job.id}`}
                   key={job.id}
-                  className="bg-white/90 backdrop-blur rounded-2xl border border-zinc-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group relative overflow-hidden focus-within:ring-2 focus-within:ring-blue-300"
+                  className="bg-white/90 backdrop-blur rounded-2xl border border-zinc-200 p-6 shadow-sm hover:shadow-xl hover:border-blue-300 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group relative overflow-hidden focus-within:ring-2 focus-within:ring-blue-300"
                 >
-                  {/* Animated border */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-400 via-blue-700 to-sky-500 blur" />
-                    <div className="absolute inset-px rounded-2xl bg-white z-0" />
-                  </div>
                   <div className="flex gap-4 z-10 relative">
                     {/* Logo */}
                     <div className="w-20 h-20 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md transition-shadow">
@@ -152,10 +147,10 @@ export default function JobsPage() {
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">
+                        <span className="px-3 py-1 bg-zinc-50 text-zinc-700 text-xs font-medium rounded-full">
                           {job.type}
                         </span>
-                        <span className="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full">
+                        <span className="px-3 py-1 bg-zinc-50 text-zinc-700 text-xs font-medium rounded-full">
                           {job.category}
                         </span>
                       </div>

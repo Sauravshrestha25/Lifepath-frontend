@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Play, ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
+import PageTitle from "../ui/PageTitle";
 
 const testimonials = [
   {
     id: 1,
     name: "Alish Maharjan",
     role: "Creative Designer",
-    video: "/videos/Alish.mp4",
+    video: "/videos/Alish-1.mp4",
     quote: "LifePath helped me discover my true potential",
     caption: "I found my dream career path through LifePath",
   },
@@ -16,7 +17,7 @@ const testimonials = [
     id: 2,
     name: "Krishma Maharjan",
     role: "UX Designer",
-    video: "/videos/krish.mp4",
+    video: "/videos/Krishma.mp4",
     quote: "The personality test was eye-opening",
     caption: "First of all, it's safe and accurate",
   },
@@ -24,11 +25,10 @@ const testimonials = [
     id: 3,
     name: "Zidan Chaudary",
     role: "Data Analyst",
-    video: "/videos/Alish.mp4",
+    video: "/videos/Zidan.mp4",
     quote: "Career guidance at its best",
     caption: "The concept of LifePath changed my life",
   },
-
 ];
 
 export default function StudentTestimonialsSection() {
@@ -70,27 +70,26 @@ export default function StudentTestimonialsSection() {
 
   return (
     <section className="py-8 px-4 md:px-0">
-      <div className="max-w-6xl mx-auto mb-16">
+      <div className="max-w-11/12 mx-auto mb-16">
         {/* Section Header */}
-        <div className="text-center lg:text-center max-w-6xl mx-auto pb-8 sm:pb-12 lg:pb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-7xl font-semibold text-blue-700 mt-4">
-            Real Students. <br /> Real Journeys.
-          </h2>
-
-          <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-center gap-2 sm:gap-3 text-sm sm:text-base text-slate-700">
-            Real stories from students who found clarity and direction.
-          </div>
-        </div>
+        <PageTitle
+          title=" Real Students. Real Journeys."
+          subtitle="Real stories from students who found clarity and direction."
+          titleClassName="text-3xl md:text-4xl  font-semibold text-zinc-900 mb-2"
+          subtitleClassName="text-lg text-zinc-600"
+          containerClassName="text-center max-w-3xl mx-auto"
+          align="center"
+        />
 
         {/* Testimonial Carousel */}
-        <div className="relative">
+        <div className="relative mt-4 md:mt-16">
           {/* Navigation Buttons - Hidden on mobile */}
           {maxIndex > 0 && (
             <>
               <button
                 onClick={handlePrevious}
                 disabled={currentIndex === 0}
-                className={`hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
+                className={`hidden sm:flex absolute left-0 top-1/2 -tranzinc-y-1/2 -tranzinc-x-4 lg:-tranzinc-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
                   currentIndex === 0
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:bg-blue-600 hover:text-white"
@@ -103,7 +102,7 @@ export default function StudentTestimonialsSection() {
               <button
                 onClick={handleNext}
                 disabled={currentIndex >= maxIndex}
-                className={`hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
+                className={`hidden sm:flex absolute right-0 top-1/2 -tranzinc-y-1/2 tranzinc-x-4 lg:tranzinc-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
                   currentIndex >= maxIndex
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:bg-blue-600 hover:text-white"
@@ -120,7 +119,7 @@ export default function StudentTestimonialsSection() {
             <div
               className="flex transition-transform duration-500 ease-out gap-4 sm:gap-6"
               style={{
-                transform: `translateX(-${
+                transform: `tranzincX(-${
                   currentIndex *
                   (100 / itemsPerView + (itemsPerView > 1 ? 2 : 0))
                 }%)`,
@@ -131,7 +130,7 @@ export default function StudentTestimonialsSection() {
                   key={testimonial.id}
                   className="shrink-0 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
-                  <div className="group relative h-96 sm:h-125 lg:h-137.5 rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-900 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-600/20">
+                  <div className="group relative h-96 sm:h-125 lg:h-137.5 rounded-2xl sm:rounded-3xl overflow-hidden bg-blue-500 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-600/20">
                     {/* Video Background */}
                     <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
                       <video
@@ -212,9 +211,6 @@ export default function StudentTestimonialsSection() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Decorative Corner Accent */}
-                    <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-linear-to-br from-blue-600/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                 </div>
               ))}

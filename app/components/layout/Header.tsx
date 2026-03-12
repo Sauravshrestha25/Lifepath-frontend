@@ -42,7 +42,7 @@ export default function Header() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="max-w-6xl mx-auto">
+      <nav className="max-w-11/12 mx-auto">
         <div className="flex items-center justify-between h-16 gap-3">
           {/* Logo */}
           <Link href={"/"} className="shrink-0 cursor-pointer">

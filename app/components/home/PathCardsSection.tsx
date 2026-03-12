@@ -3,6 +3,7 @@
 import { MoveRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import PageTitle from "../ui/PageTitle";
 
 export default function PathCardsSection() {
   const steps = [
@@ -46,18 +47,20 @@ export default function PathCardsSection() {
 
   return (
     <section className="w-full px-4 md:px-0 bg-white">
-      <div className="max-w-4xl mx-auto py-16">
+      <div className="max-w-11/12 mx-auto py-16">
         <div className="text-center mb-12">
           {/* <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Why choose Lifepath?
           </div> */}
 
-          <h2 className="max-w-5xl mx-auto text-3xl  md:text-7xl font-semibold text-blue-700 mt-4">
-            From confusion to <br />career clarity
-          </h2>
-          <p className="text-zinc-800 mt-3 max-w-2xl mx-auto text-base md:text-sm">
-            LifePath helps students decide first, then learn with confidence.
-          </p>
+          <PageTitle
+            title="From confusion to career clarity"
+            subtitle="LifePath helps students decide first, then learn with confidence."
+            titleClassName="text-3xl md:text-4xl font-semibold text-zinc-900 mb-2"
+            subtitleClassName="text-lg text-zinc-600"
+            containerClassName="text-center max-w-3xl mx-auto"
+            align="center"
+          />
         </div>
 
         <div className="relative grid gap-8">
