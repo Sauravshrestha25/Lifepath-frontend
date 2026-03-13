@@ -4,9 +4,8 @@ import { Montserrat, Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import Header from "./components/layout/Header";
-// import Footer from "./components/layout/Footer";
 import SmoothScroll from "./components/SmoothScroll";
-import Footer2 from "./components/layout/Footer2";
+import Footer from "./components/layout/Footer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -64,7 +63,7 @@ export default function RootLayout({
         <SmoothScroll />
         {!isAuthPage && !isLearnPage && <Header />}
         <main className="min-h-screen">{children}</main>
-        {!isAuthPage && !isLearnPage && <Footer2 />}
+        {!isAuthPage && !isLearnPage && <Footer />}
       </body>
     </html>
   );

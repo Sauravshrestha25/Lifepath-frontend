@@ -1,185 +1,347 @@
 "use client";
 
-import { Calendar, MapPin, Clock, Users, Search } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
+import {
+  Award,
+  Calendar,
+  Info,
+  Mail,
+  User,
+  BookOpen,
+  Contact,
+  LocateIcon,
+} from "lucide-react";
+import Image from "next/image";
 
-export default function EventsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+const essayEvent = {
+  title: "National Essay Competition 2026",
+  description:
+    "A platform for students to voice their ideas on career development and personal growth. Showcase your writing and win exciting prizes.",
+  rules: [
+    "The essay must be original and unpublished.",
+    "Word count should be between 1000-1500 words.",
+    "Submit in PDF format.",
+    "Topic: 'The title will be released right after 2 days of submission'.",
+  ],
+  prizes: [
+    "1st Prize: Rs. 50,000 + Certificate",
+    "2nd Prize: Rs. 25,000 + Certificate",
+    "3rd Prize: Rs. 10,000 + Certificate",
+    "Top 10 entries will be published on our blog.",
+  ],
+  deadline: "July 15, 2026, 11:59 PM",
+};
 
-  const events = [
-    {
-      id: 1,
-      title: "Tech Career Fair 2026",
-      date: "Feb 15, 2026",
-      time: "10:00 AM - 5:00 PM",
-      location: "Kathmandu Convention Center",
-      attendees: "500+",
-      type: "Career Fair",
-      description:
-        "Meet top tech companies in Nepal and explore career opportunities",
-      image: "/heroImages/woman3.png",
-    },
-    {
-      id: 2,
-      title: "UI/UX Design Workshop",
-      date: "Feb 20, 2026",
-      time: "2:00 PM - 6:00 PM",
-      location: "Design Studio, Lalitpur",
-      attendees: "50",
-      type: "Workshop",
-      description: "Hands-on workshop covering user research and prototyping",
-      image: "/heroImages/woman3.png",
-    },
-    {
-      id: 3,
-      title: "Digital Marketing Webinar",
-      date: "Feb 25, 2026",
-      time: "6:00 PM - 8:00 PM",
-      location: "Online",
-      attendees: "200+",
-      type: "Webinar",
-      description:
-        "Learn the latest digital marketing strategies from industry experts",
-      image: "/heroImages/woman3.png",
-    },
-    {
-      id: 4,
-      title: "Startup Networking Night",
-      date: "Mar 5, 2026",
-      time: "6:00 PM - 9:00 PM",
-      location: "Tech Hub Nepal, Kathmandu",
-      attendees: "100+",
-      type: "Networking",
-      description:
-        "Connect with founders, investors, and tech professionals in Nepal",
-      image: "/heroImages/woman3.png",
-    },
-    {
-      id: 5,
-      title: "Web Development Bootcamp",
-      date: "Mar 10, 2026",
-      time: "9:00 AM - 5:00 PM",
-      location: "Learning Center, Pokhara",
-      attendees: "30",
-      type: "Bootcamp",
-      description:
-        "Intensive full-day bootcamp on modern web development technologies",
-      image: "/heroImages/woman3.png",
-    },
-    {
-      id: 6,
-      title: "Women in Tech Conference",
-      date: "Mar 18, 2026",
-      time: "10:00 AM - 6:00 PM",
-      location: "Hotel Annapurna, Kathmandu",
-      attendees: "300+",
-      type: "Conference",
-      description:
-        "Empowering women in technology with inspiring talks and panels",
-      image: "/heroImages/woman3.png",
-    },
-  ];
+export default function EssayCompetitionPage() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    number: "",
+    address: "",
+    college: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const filteredEvents = events.filter((event) =>
-    event.title.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files.length > 0) {
+  //     setFormData((prev) => ({ ...prev, essayFile: e.target.files![0] }));
+  //   }
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    // Basic validation
+    if (!formData.fullName || !formData.email || !formData.number || !formData.address) {
+      setSubmitMessage(
+        "Please fill all required fields and upload your essay.",
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    console.log("Form Data:", formData);
+    setSubmitMessage("Thank you! Your submission has been received.");
+    setIsSubmitting(false);
+    setFormData({
+      fullName: "",
+      email: "",
+      college: "",
+      number: "",
+      address: "",
+    });
+    // Reset file input visually
+    const fileInput = document.getElementById("essayFile") as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = "";
+    }
+  };
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="bg-linear-to-r from-black to-blue-700 text-white">
-        <div className="max-w-6xl mx-auto py-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
-              Upcoming Events
-            </h1>
-            <p className="text-lg text-blue-100 mb-8">
-              Network, learn, and grow with our community events and workshops
-            </p>
+    <main className="min-h-screen bg-zinc-50 pt-20 pb-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-0">
+        {/* Header */}
+        <div className="w-full">
+          <Image
+            src={"/essay.png"}
+            alt="Essay Competition"
+            height={400}
+            width={1300} 
+            priority
+            className="bg-blue-200 rounded-4xl h-100 w-full object-cover object-center"
+          />
+        </div>
+        {/* <div className="mb-12 text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-100 px-4 py-1.5">
+            <Award size={16} className="text-blue-600" />
+            <span className="text-sm font-semibold text-blue-700">
+              Competition Details
+            </span>
+          </div>
+          <h1 className="text-4xl font-bold text-zinc-900 md:text-5xl">
+            {essayEvent.title}
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
+            {essayEvent.description}
+          </p>
+        </div> */}
 
-            {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto">
-              <Search
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-100"
-                size={20}
-              />
-              <input
-                type="text"
-                placeholder="Search events..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/20 border-2 border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              />
+        <div className="grid gap-10 md:grid-cols-2 mt-4 md:mt-16">
+          {/* Left: Details */}
+          <div className="space-y-8">
+            <div>
+              <h2 className="mb-4 flex items-center gap-3 text-2xl font-semibold text-zinc-800">
+                <Info size={24} className="text-blue-500" />
+                Rules & Guidelines
+              </h2>
+              <ul className="list-inside list-disc space-y-2 text-zinc-600">
+                {essayEvent.rules.map((rule, index) => (
+                  <li key={index}>{rule}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-4 flex items-center gap-3 text-2xl font-semibold text-zinc-800">
+                <Award size={24} className="text-blue-500" />
+                Prizes
+              </h2>
+              <ul className="list-inside list-disc space-y-2 text-zinc-600">
+                {essayEvent.prizes.map((prize, index) => (
+                  <li key={index}>{prize}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-4 flex items-center gap-3 text-2xl font-semibold text-zinc-800">
+                <Calendar size={24} className="text-blue-500" />
+                Important Date
+              </h2>
+              <p className="text-zinc-600">
+                Submission Deadline:{" "}
+                <span className="font-semibold text-zinc-800">
+                  {essayEvent.deadline}
+                </span>
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Events Grid */}
-      <section className="max-w-6xl mx-auto py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredEvents.map((event) => (
-            <div
-              key={event.id}
-              className="bg-white border border-zinc-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
-            >
-              <div className="relative h-48 bg-zinc-100">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  fill
-                  className="object-cover"
-                />
-                <span className="absolute top-2 right-2 px-2 py-1 bg-white text-xs font-bold text-blue-600 rounded">
-                  {event.type}
-                </span>
+          {/* Right: Submission Form */}
+          <div className="rounded-2xl border border-zinc-200 bg-white p-8">
+            <h2 className="mb-6 text-2xl font-semibold text-zinc-800">
+              Register & Submit Your Essay
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label
+                  htmlFor="fullName"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  Full Name
+                </label>
+                <div className="relative">
+                  <User
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                    size={18}
+                  />
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-lg border-zinc-300 py-2.5 pl-10 pr-3 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Your full name"
+                  />
+                </div>
               </div>
-
-              <div className="p-5">
-                <h3 className="text-lg font-semibold text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {event.title}
-                </h3>
-                <p className="text-xs text-zinc-600 mb-4">
-                  {event.description}
-                </p>
-
-                <div className="space-y-2 text-xs text-zinc-600 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} className="text-blue-600" />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock size={16} className="text-blue-600" />
-                    <span>{event.time}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={16} className="text-blue-600" />
-                    <span>{event.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users size={16} className="text-blue-600" />
-                    <span>{event.attendees} attendees</span>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  Email Address
+                </label>
+                <div className="relative">
+                  <Mail
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                    size={18}
+                  />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-lg border-zinc-300 py-2.5 pl-10 pr-3 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  Phone Number
+                </label>
+                <div className="relative">
+                  <Contact
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                    size={18}
+                  />
+                  <input
+                    type="number"
+                    id="number"
+                    name="number"
+                    value={formData.number}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-lg border-zinc-300 py-2.5 pl-10 pr-3 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="9700000000"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  Address
+                </label>
+                <div className="relative">
+                  <LocateIcon
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                    size={18}
+                  />
+                  <input
+                    type="text"
+                    id="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-lg border-zinc-300 py-2.5 pl-10 pr-3 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="college"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  College/University (Optional)
+                </label>
+                <div className="relative">
+                  <BookOpen
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                    size={18}
+                  />
+                  <input
+                    type="text"
+                    id="college"
+                    name="college"
+                    value={formData.college}
+                    onChange={handleInputChange}
+                    className="w-full rounded-lg border-zinc-300 py-2.5 pl-10 pr-3 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Your institution name"
+                  />
+                </div>
+              </div>
+              {/* <div>
+                <label
+                  htmlFor="essayFile"
+                  className="mb-1 block text-sm font-medium text-zinc-700"
+                >
+                  Upload Essay (PDF)
+                </label>
+                <div className="relative mt-1 flex justify-center rounded-lg border-2 border-dashed border-zinc-300 px-6 pt-5 pb-6">
+                  <div className="space-y-1 text-center">
+                    <FileText
+                      className="mx-auto h-12 w-12 text-zinc-400"
+                      strokeWidth={1}
+                    />
+                    <div className="flex text-sm text-zinc-600">
+                      <label
+                        htmlFor="essayFile"
+                        className="relative cursor-pointer rounded-md bg-white font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
+                      >
+                        <span>Upload a file</span>
+                        <input
+                          id="essayFile"
+                          name="essayFile"
+                          type="file"
+                          accept=".pdf"
+                          onChange={handleFileChange}
+                          required
+                          className="sr-only"
+                        />
+                      </label>
+                      <p className="pl-1">or drag and drop</p>
+                    </div>
+                    <p className="text-xs text-zinc-500">
+                      {formData.essayFile
+                        ? formData.essayFile.name
+                        : "PDF up to 10MB"}
+                    </p>
                   </div>
                 </div>
-
-                <button className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors text-sm">
-                  Register Now
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {filteredEvents.length === 0 && (
-          <div className="text-center py-16">
-            <Calendar size={48} className="mx-auto text-zinc-300 mb-4" />
-            <p className="text-zinc-600">
-              No events found matching your search.
-            </p>
+              </div> */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex w-full justify-center rounded-full bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:bg-blue-400"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Application"}
+              </button>
+              {submitMessage && (
+                <p
+                  className={`text-center text-sm ${
+                    submitMessage.includes("Thank you")
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {submitMessage}
+                </p>
+              )}
+            </form>
           </div>
-        )}
-      </section>
-    </div>
+        </div>
+      </div>
+    </main>
   );
 }

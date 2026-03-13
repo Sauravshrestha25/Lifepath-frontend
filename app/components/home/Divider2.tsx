@@ -32,8 +32,8 @@ export default function StorySection() {
   }, []);
 
   return (
-    <section className="relative bg-blue-700 to-black py-8 md:py-16 overflow-hidden">
-      <div ref={containerRef} className="relative max-w-6xl mx-auto">
+    <section className="relative bg-blue-700 from-blue-700 to-black py-8 md:py-16 overflow-hidden">
+      <div ref={containerRef} className="relative max-w-7xl mx-auto">
         <p className="text-center text-2xl md:text-4xl lg:text-5xl font-medium leading-snug text-white">
           {TEXT.split(" ").map((w, i) => (
             <span key={i} className="reveal-word inline-block mr-2">

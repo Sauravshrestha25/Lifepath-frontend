@@ -3,7 +3,7 @@ import { ArrowRight, Mail, Phone, Send } from "lucide-react";
 
 export default function ContactUsPage() {
   return (
-    <div className="min-h-screen pt-16 bg-white">
+    <div className="min-h-screen pt-16 bg-zinc-50">
       <section className="max-w-6xl mx-auto py-16 px-4 md:px-0">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-semibold text-zinc-900">

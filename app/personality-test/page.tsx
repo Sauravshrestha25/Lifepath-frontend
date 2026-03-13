@@ -8,7 +8,6 @@ import {
   Brain,
   CheckCircle,
   Clock,
-  User,
   Eye,
   Leaf,
   ListChecks,
@@ -20,7 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { getPersonalityType } from "./personalityData";
-import NewsletterCTA from "../components/home/NewsletterCTA";
+// import NewsletterCTA from "../components/home/NewsletterCTA";
 
 type Question = {
   id: number;
@@ -383,6 +382,13 @@ export default function PersonalityTestPage() {
   const [showResult, setShowResult] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const scale = [
+    { value: 1, label: "100%" },
+    { value: 2, label: "75%" },
+    { value: 3, label: "50%" },
+    { value: 4, label: "75%" },
+    { value: 5, label: "100%" },
+  ];
 
   // Get window size for confetti
   useEffect(() => {
@@ -476,6 +482,7 @@ export default function PersonalityTestPage() {
       return null;
     }
 
+    // Result Hero Section
     return (
       <div className="min-h-screen pt-16 pb-12 bg-zinc-50">
         {/* Confetti Effect */}
@@ -780,9 +787,12 @@ export default function PersonalityTestPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16 bg-zinc-100 overflow-hidden">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-l from-blue-600 to-black text-white">
+    <div
+      className="min-h-screen pt-16 bg-zinc-100 overflow-hidden"
+      id="personalityTest"
+    >
+      {/* Questions Hero Section */}
+      <section className="bg-linear-to-l from-blue-600 to-black text-white">
         <div className="max-w-6xl mx-auto py-8 md:py-12 px-4 relative">
           {/* Test Toggle Button */}
           <button
@@ -834,7 +844,7 @@ export default function PersonalityTestPage() {
           </div>
           <div className="w-full bg-zinc-200 rounded-full h-2.5 shadow-inner">
             <div
-              className="bg-gradient-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
+              className="bg-linear-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -858,19 +868,19 @@ export default function PersonalityTestPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-center gap-6 text-xs font-medium text-zinc-600 px-2">
-                <span>100%</span>
-                <span>50%</span>
+              <div className="flex items-center justify-center gap-8 text-xs font-medium text-zinc-600 px-2">
+                <span>Strong</span>
+                <span>Mid</span>
                 <span className="text-zinc-500">Neutral</span>
-                <span>50%</span>
-                <span>100%</span>
+                <span>Mid</span>
+                <span>Strong</span>
               </div>
               <div className="flex items-center justify-center gap-2">
-                {[1, 2, 3, 4, 5].map((value) => (
+                {scale.map(({ value, label }) => (
                   <button
                     key={value}
                     onClick={() => handleAnswer(value)}
-                    className={`flex h-12 w-12 items-center justify-center rounded-md border-2 text-sm font-semibold transition-colors cursor-pointer ${
+                    className={`flex h-12 w-14 items-center justify-center rounded-md border-2 text-sm font-semibold transition-colors cursor-pointer ${
                       currentAnswer === value
                         ? value === 1
                           ? "border-blue-600 bg-blue-600 text-white"
@@ -879,8 +889,8 @@ export default function PersonalityTestPage() {
                             : value === 3
                               ? "border-zinc-500 bg-zinc-500 text-white"
                               : value === 4
-                                ? "border-green-500 bg-green-500 text-white"
-                                : "border-green-600 bg-green-600 text-white"
+                                ? "border-yellow-500 bg-yellow-500 text-white"
+                                : "border-yellow-600 bg-yellow-600 text-white"
                         : value === 1
                           ? "border-blue-400 bg-blue-50 hover:bg-blue-600 hover:text-white text-zinc-800 hover:border-blue-500"
                           : value === 2
@@ -888,18 +898,18 @@ export default function PersonalityTestPage() {
                             : value === 3
                               ? "border-zinc-200 bg-zinc-50 text-zinc-800 hover:border-zinc-400 hover:bg-zinc-400 hover:text-white"
                               : value === 4
-                                ? "border-green-200 bg-green-50 text-zinc-800 hover:border-green-300 hover:bg-green-300 hover:text-white"
-                                : "border-green-400 bg-green-50 text-zinc-800 hover:border-green-400 hover:bg-green-400 hover:text-white"
+                                ? "border-yellow-200 bg-yellow-50 text-zinc-800 hover:border-yellow-300 hover:bg-yellow-300 hover:text-white"
+                                : "border-yellow-400 bg-yellow-50 text-zinc-800 hover:border-yellow-400 hover:bg-yellow-400 hover:text-white"
                     }`}
                   >
-                    {value}
+                    {label}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-              <p className="text-xs font-semibold text-green-600 mb-1 uppercase tracking-wide">
+            <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4">
+              <p className="text-xs font-semibold text-yellow-600 mb-1 uppercase tracking-wide">
                 Option B
               </p>
               <p className="text-sm md:text-lg font-medium text-zinc-900">
@@ -911,7 +921,7 @@ export default function PersonalityTestPage() {
           <div className="p-2 mb-6">
             <p className="text-center text-zinc-600">
               Choose <span className="font-semibold text-blue-600">A</span> or{" "}
-              <span className="font-semibold text-green-600">B</span>, or{" "}
+              <span className="font-semibold text-yellow-600">B</span>, or{" "}
               <span className="font-semibold text-zinc-600">Neutral</span> if
               neither fits perfectly
             </p>
@@ -947,7 +957,7 @@ export default function PersonalityTestPage() {
               className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all ${
                 !isAnswered
                   ? "bg-zinc-200 text-zinc-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
+                  : "bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
               }`}
             >
               <span className="hidden sm:inline">
@@ -961,12 +971,12 @@ export default function PersonalityTestPage() {
           </div>
         </div>
       </section>
-      <NewsletterCTA
+      {/* <NewsletterCTA
         btnText="Join Class Today"
         title="Ready to take the next step in your career?"
         description="Enroll in our job training programs and unlock your potential."
         imageSrc="/heroImages/woman2.png"
-      />
+      /> */}
     </div>
   );
 }

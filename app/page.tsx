@@ -8,6 +8,7 @@ import FAQSection from "./components/home/FAQSection";
 import NewsletterCTA from "./components/home/NewsletterCTA";
 import Divider2 from "./components/home/Divider2";
 import Divider3 from "./components/home/Divider3";
+import ProblemSolution from "./components/home/ProblemSolution";
 // import Footer from "./components/layout/Footer";
 // import FooterCTA from "./components/footerCTA/FooterCTA";
 // import Help from "./components/help/Help";
@@ -15,23 +16,23 @@ import Divider3 from "./components/home/Divider3";
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div>
       <HeroSection />
       <Divider2 />
       {/* <Help2 /> */}
-      <PathCardsSection />
+      <ProblemSolution />
       <StorySection />
       {/* <MBTISection /> */}
       <HowItWorksSection />
-      <StudentTestimonialsSection />
-      <Divider3 />
-      <FAQSection />
       <NewsletterCTA
         title="Clarity changes everything."
         btnText="Start Your Journey"
         imageSrc="/heroImages/woman2.png"
         description="Build a career that fits you — one insight at a time."
       />
+      <StudentTestimonialsSection />
+      <Divider3 />
+      <FAQSection />
       {/* Call */}
       {/* <FooterCTA /> */}
     </div>

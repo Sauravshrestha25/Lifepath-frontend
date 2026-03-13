@@ -47,7 +47,7 @@ export default function PathCardsSection() {
 
   return (
     <section className="w-full px-4 md:px-0 bg-white">
-      <div className="max-w-11/12 mx-auto py-16">
+      <div className="max-w-5xl mx-auto py-16">
         <div className="text-center mb-12">
           {/* <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Why choose Lifepath?
@@ -80,7 +80,7 @@ export default function PathCardsSection() {
                     <Image
                       src={
                         step.leftTitle === "Confused student"
-                          ? "/heroImages/unclear.png"
+                          ? "/problem/a.jpg"
                           : step.leftTitle === "Unclear strengths"
                             ? "/heroImages/problem.jpg"
                             : step.leftTitle === "Random learning"

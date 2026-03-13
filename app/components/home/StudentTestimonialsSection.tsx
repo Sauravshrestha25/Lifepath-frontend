@@ -70,7 +70,7 @@ export default function StudentTestimonialsSection() {
 
   return (
     <section className="py-8 px-4 md:px-0">
-      <div className="max-w-11/12 mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16">
         {/* Section Header */}
         <PageTitle
           title=" Real Students. Real Journeys."
@@ -135,7 +135,7 @@ export default function StudentTestimonialsSection() {
                     <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
                       <video
                         src={testimonial.video}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-[80vh] w-full object-cover"
                         muted
                         loop
                         playsInline
@@ -160,7 +160,7 @@ export default function StudentTestimonialsSection() {
                         <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-600/30 animate-ping"></div>
 
                         {/* Main Play Button */}
-                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-300">
+                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-2xl group-hover:scale-105 group-hover:bg-blue-600 transition-all duration-300">
                           <Play
                             size={28}
                             className="sm:w-8 sm:h-8 text-blue-600 group-hover:text-white ml-1 transition-colors"
@@ -184,7 +184,7 @@ export default function StudentTestimonialsSection() {
                     )}
 
                     {/* Quote Badge */}
-                    <div className="absolute top-4 sm:top-6 left-4 sm:left-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600/90 backdrop-blur-sm rounded-full">
+                    <div className="absolute top-4 sm:top-6 right-4 sm:right-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600/90 backdrop-blur-sm rounded-full">
                       <span className="text-white text-xs font-semibold">
                         Success Story
                       </span>

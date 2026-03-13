@@ -3,120 +3,188 @@
 import Image from "next/image";
 import PageTitle from "../ui/PageTitle";
 
+const steps = [
+  {
+    step: "Step 01",
+    title: "Know Yourself Deeply",
+    description:
+      "Science-backed assessments reveal how you think, what energizes you.",
+    image: "/heroImages/self.png",
+    variant: "wide",
+  },
+  {
+    step: "Step 02",
+    title: "Choose the Right Path",
+    description:
+      "Match your personality and interests to careers that truly fit you.",
+    variant: "small",
+  },
+  {
+    step: "Step 03",
+    title: "Build Real Skills",
+    description:
+      "Hands-on projects, real tools, and mentorship that keep you moving.",
+    variant: "small",
+  },
+  {
+    step: "Step 04",
+    title: "From Learning to Earning",
+    description:
+      "Finish ready for paid work, freelancing, or a confident career.",
+    image: "/heroImages/life3.png",
+    variant: "wideBottom",
+  },
+];
+
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="pt-8 md:pt-16 bg-white">
-      <div className="max-w-11/12 mx-auto px-4 md:px-0 mb-16">
-        {/* Section Header */}
-        <div className="mb-0 text-left">
-          {/* <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
-            How LifePath Works
-          </div> */}
-          <PageTitle
-            title="From self-discovery to paid work no guesswork, just momentum"
-            subtitle="Discover your strengths, choose the right path, and take confident steps toward a fulfilling career."
-            titleClassName="text-3xl md:text-4xl font-semibold text-zinc-900 mb-2"
-            subtitleClassName="text-lg text-zinc-600"
-            containerClassName="text-center max-w-3xl mx-auto"
-            align="center"
+    <section id="how-it-works" className="bg-white py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-0">
+        <PageTitle
+          title="From self-discovery to paid work, no guesswork, just momentum"
+          subtitle="Discover your strengths, choose the right path, and take confident steps toward a fulfilling career."
+          titleClassName="text-3xl md:text-5xl font-semibold text-zinc-900 mb-3"
+          subtitleClassName="text-base md:text-lg text-zinc-600"
+          containerClassName="text-center max-w-3xl mx-auto"
+          align="center"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14  h-auto">
+          {/* Top Left Wide Card */}
+          <HoverCard
+            step={steps[0].step}
+            title={steps[0].title}
+            description={steps[0].description}
+            image={steps[0].image}
+            className="md:col-span-2 md:row-span-1"
+            darkOverlay
           />
-        </div>
 
-        {/* Stepped Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-16">
-          {/* Step 1 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
-            <Image
-              src="/steps/know.png"
-              alt="Step 1"
-              width={300}
-              height={400}
-              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
-            />
-            <div className="absolute top-4 left-4 font-semibold text-blue-500 z-10">
-              Step 01
-            </div>
-            <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                Know Yourself (Deeply)
-              </h3>
-              <p className="text-zinc-200 text-sm">
-                Science-backed assessments reveal how you think, what energizes
-                you, and your real strengths.
-              </p>
-            </div>
-          </div>
+          {/* Top Right Small Card */}
+          <HoverCard
+            step={steps[1].step}
+            title={steps[1].title}
+            description={steps[1].description}
+            className="md:col-span-1 md:row-span-1 bg-blue-700"
+            textDark
+          />
 
-          {/* Step 2 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
-            <Image
-              src="/heroImages/step1.png"
-              alt="Step 2"
-              width={300}
-              height={400}
-              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
-            />
-            <div className="absolute top-4 left-4 font-semibold text-blue-500 z-10">
-              Step 02
-            </div>
-            <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                Choose the Right Path
-              </h3>
-              <p className="text-zinc-200 text-sm">
-                Match your personality and interests to in-demand careers that
-                actually exist right now.
-              </p>
-            </div>
-          </div>
+          {/* Bottom Left Small Card */}
+          <HoverCard
+            step={steps[2].step}
+            title={steps[2].title}
+            description={steps[2].description}
+            className="md:col-span-1 md:row-span-1 bg-blue-800"
+            textLight
+          />
 
-          {/* Step 3 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
-            <Image
-              src="/heroImages/happy.png"
-              alt="Step 3"
-              width={300}
-              height={400}
-              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
-            />
-            <div className="absolute top-4 left-4 font-semibold text-blue-500 z-10">
-              Step 03
-            </div>
-            <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                Build Real Skills
-              </h3>
-              <p className="text-zinc-200 text-sm">
-                Hands-on projects with real tools, portfolio-worthy work, and
-                mentorship that keeps you accountable.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 4 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
-            <Image
-              src="/heroImages/next.png"
-              alt="Step 4"
-              width={300}
-              height={400}
-              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
-            />
-            <div className="absolute top-4 left-4 font-semibold text-blue-500 z-10">
-              Step 04
-            </div>
-            <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                From Learning to Earning
-              </h3>
-              <p className="text-zinc-200 text-sm">
-                Finish ready to land paid work, freelance with momentum, or
-                switch careers confidently.
-              </p>
-            </div>
-          </div>
+          {/* Bottom Right Wide Card */}
+          <HoverCard
+            step={steps[3].step}
+            title={steps[3].title}
+            description={steps[3].description}
+            image={steps[3].image}
+            className="md:col-span-2 md:row-span-1"
+            greenOverlay
+          />
         </div>
       </div>
     </section>
+  );
+}
+
+type HoverCardProps = {
+  step: string;
+  title: string;
+  description: string;
+  image?: string;
+  className?: string;
+  darkOverlay?: boolean;
+  greenOverlay?: boolean;
+  textDark?: boolean;
+  textLight?: boolean;
+};
+
+function HoverCard({
+  step,
+  title,
+  description,
+  image,
+  className = "",
+  darkOverlay = false,
+  greenOverlay = false,
+  textDark = false,
+  textLight = false,
+}: HoverCardProps) {
+  return (
+    <div
+      className={`group relative overflow-hidden rounded-[28px] min-h-85 ${className}`}
+    >
+      {/* Background image */}
+      {image && (
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-contain transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
+
+      {/* Overlay */}
+      {image && (
+        <div
+          className={`absolute object-contain inset-0 transition-all duration-500 ${
+            darkOverlay
+              ? "bg-blue-500 group-hover:bg-blue-500/80"
+              : greenOverlay
+                ? "bg-blue-600 group-hover:bg-blue-500/80"
+                : "bg-black/30"
+          }`}
+        />
+      )}
+
+      {/* Default content */}
+      <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-between z-10">
+        <span
+          className={`text-sm font-semibold tracking-wide ${
+            textDark
+              ? "text-white"
+              : textLight
+                ? "text-white"
+                : "text-white"
+          }`}
+        >
+          {step}
+        </span>
+
+        <div className="transition-all duration-500 group-hover:-translate-y-20">
+          <h3
+            className={`text-2xl md:text-4xl font-semibold leading-tight max-w-[14ch] ${
+              textDark ? "text-white" : "text-white"
+            }`}
+          >
+            {title}
+          </h3>
+        </div>
+      </div>
+
+      {/* Hover details */}
+      <div className="absolute inset-0 z-20 flex items-end p-6 md:p-7 pointer-events-none">
+        <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <div
+            className={`w-12 h-px mb-4 ${
+              textDark ? "bg-white" : "bg-white"
+            }`}
+          />
+          <p
+            className={`text-sm md:text-base leading-6 max-w-[30ch] ${
+              textDark ? "text-white" : "text-white"
+            }`}
+          >
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
