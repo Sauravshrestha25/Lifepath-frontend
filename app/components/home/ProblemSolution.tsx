@@ -41,8 +41,8 @@ export default function ProblemSolution() {
         <PageTitle
           title="From confusion to career clarity"
           subtitle="LifePath helps students decide first, then learn with confidence."
-          titleClassName="text-3xl md:text-5xl font-semibold text-zinc-900 mb-3"
-          subtitleClassName="text-base md:text-lg text-zinc-600"
+          titleClassName="text-3xl md:text-5xl font-semibold text-blue-600 mb-3"
+          subtitleClassName="text-base md:text-lg text-zinc-700"
           containerClassName="text-center max-w-3xl mx-auto"
           align="center"
         />

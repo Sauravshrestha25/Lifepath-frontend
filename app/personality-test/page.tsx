@@ -497,7 +497,14 @@ export default function PersonalityTestPage() {
         )}
 
         {/* Result Header - Clean & Simple */}
-        <section className="bg-white border-b">
+        <section
+          className="bg-white border-b"
+          style={{
+            backgroundImage: "url(/404/404.png)",
+            backgroundPosition: "bottom",
+            backgroundSize: "cover",
+          }}
+        >
           <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
             {/* Back Button */}
             <button
@@ -531,14 +538,14 @@ export default function PersonalityTestPage() {
                     {result}
                   </div>
                 </div>
-                <p className="text-lg text-zinc-600 leading-relaxed">
+                <p className="text-lg text-zinc-50 leading-relaxed">
                   {personality.tagline}
                 </p>
               </div>
             </div>
 
             {/* Introduction */}
-            <div className="bg-white rounded-xl p-6 md:p-8 mb-6 border border-zinc-200">
+            <div className="bg-white/70 backdrop-blur-2xl rounded-xl p-6 md:p-8 mb-6 border border-zinc-200">
               <p className="text-lg md:text-2xl text-zinc-800 font-semibold mb-4">
                 {personality.description}
               </p>

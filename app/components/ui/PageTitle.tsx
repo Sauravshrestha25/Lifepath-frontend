@@ -30,13 +30,14 @@ export default function PageTitle({
     >
       <h1
         className={
-          titleClassName || "text-2xl md:text-4xl font-semibold text-white mb-4"
+          titleClassName ||
+          "text-2xl md:text-4xl font-semibold text-blue-500 mb-4"
         }
       >
         {title}
       </h1>
       {subtitle && (
-        <p className={subtitleClassName || "text-lg text-zinc-600"}>
+        <p className={subtitleClassName || "text-lg text-zinc-700"}>
           {subtitle}
         </p>
       )}

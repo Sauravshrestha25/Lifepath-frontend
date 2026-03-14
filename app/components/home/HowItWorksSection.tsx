@@ -21,7 +21,7 @@ const steps = [
   },
   {
     step: "Step 03",
-    title: "Build Real Skills",
+    title: "Build Real Life Skills",
     description:
       "Hands-on projects, real tools, and mentorship that keep you moving.",
     variant: "small",
@@ -43,20 +43,20 @@ export default function HowItWorksSection() {
         <PageTitle
           title="From self-discovery to paid work, no guesswork, just momentum"
           subtitle="Discover your strengths, choose the right path, and take confident steps toward a fulfilling career."
-          titleClassName="text-3xl md:text-5xl font-semibold text-zinc-900 mb-3"
-          subtitleClassName="text-base md:text-lg text-zinc-600"
+          titleClassName="text-3xl md:text-5xl font-semibold text-blue-600 mb-3"
+          subtitleClassName="text-base md:text-lg text-zinc-700"
           containerClassName="text-center max-w-3xl mx-auto"
           align="center"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14  h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-14  h-auto">
           {/* Top Left Wide Card */}
           <HoverCard
             step={steps[0].step}
             title={steps[0].title}
             description={steps[0].description}
             image={steps[0].image}
-            className="md:col-span-2 md:row-span-1"
+            className="md:col-span-1"
             darkOverlay
           />
 
@@ -65,7 +65,7 @@ export default function HowItWorksSection() {
             step={steps[1].step}
             title={steps[1].title}
             description={steps[1].description}
-            className="md:col-span-1 md:row-span-1 bg-blue-700"
+            className="md:col-span-1 bg-blue-800"
             textDark
           />
 
@@ -74,7 +74,7 @@ export default function HowItWorksSection() {
             step={steps[2].step}
             title={steps[2].title}
             description={steps[2].description}
-            className="md:col-span-1 md:row-span-1 bg-blue-800"
+            className="md:col-span-1 bg-blue-700"
             textLight
           />
 
@@ -84,7 +84,7 @@ export default function HowItWorksSection() {
             title={steps[3].title}
             description={steps[3].description}
             image={steps[3].image}
-            className="md:col-span-2 md:row-span-1"
+            className="md:col-span-1"
             greenOverlay
           />
         </div>
@@ -118,7 +118,7 @@ function HoverCard({
 }: HoverCardProps) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-[28px] min-h-85 ${className}`}
+      className={`group relative overflow-hidden rounded-[28px] min-h-120 ${className}`}
     >
       {/* Background image */}
       {image && (
@@ -135,7 +135,7 @@ function HoverCard({
         <div
           className={`absolute object-contain inset-0 transition-all duration-500 ${
             darkOverlay
-              ? "bg-blue-500 group-hover:bg-blue-500/80"
+              ? "bg-blue-900 group-hover:bg-blue-500/80"
               : greenOverlay
                 ? "bg-blue-600 group-hover:bg-blue-500/80"
                 : "bg-black/30"
@@ -159,7 +159,7 @@ function HoverCard({
 
         <div className="transition-all duration-500 group-hover:-translate-y-20">
           <h3
-            className={`text-2xl md:text-4xl font-semibold leading-tight max-w-[14ch] ${
+            className={`text-2xl md:text-3xl pb-3 font-semibold leading-tight max-w-[14ch] ${
               textDark ? "text-white" : "text-white"
             }`}
           >

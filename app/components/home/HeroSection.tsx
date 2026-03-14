@@ -21,13 +21,13 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto grid items-center gap-12 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-3xl space-y-6">
           <div className="space-y-4">
-            <h1 className="text-4xl font-semibold text-blue-700 sm:text-5xl lg:text-7xl">
-              Discover Yourself. <br /> Train Smart. <br /> Build Your Future.
+            <h1 className="text-4xl font-semibold font-montserrat text-blue-700 sm:text-5xl lg:text-5xl">
+              Don&apos;t Just Choose a Career. Discover Your Direction.
             </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-black font-medium md:text-xl">
-              We help you understand yourself, choose a career that fits your
-              personality, and get job-ready skills that companies actually
-              need.
+            <p className="max-w-2xl text-base leading-relaxed text-zinc-700 font-medium md:text-base">
+              A platform designed to guide students toward meaningful careers.
+              Get mentorship, practical training, and clarity about your future
+              so you can build the life you truly want.
             </p>
           </div>
 
