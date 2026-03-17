@@ -68,7 +68,7 @@ const stories: Story[] = [
     quote: "Lifepath gave me clarity and confidence to take action.",
     story:
       "He created structured content systems, learned paid social basics, and now leads social growth for multiple brands. By tracking engagement trends and iterating weekly, he gained the confidence to pitch and manage larger accounts.",
-    img: "/students/Sujan.jpeg",
+    img: "/students/sujan.jpeg",
   },
   {
     name: "Sijan Bartaula",
